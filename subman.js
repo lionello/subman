@@ -276,15 +276,15 @@ global.describe &&
       })
 
       it('#subscribe() throws', async function() {
-        await Assert.rejects(subman.subscribe(channel, () => {}), /not started/)
+        await Assert.rejects(() => subman.subscribe(channel, () => {}), /not started/)
       })
 
       it('#publish() throws', async function() {
-        await Assert.rejects(subman.publish(channel, testmsg), /not started/)
+        await Assert.rejects(() => subman.publish(channel, testmsg), /not started/)
       })
 
       it('#wait() throws', async function() {
-        await Assert.rejects(subman.wait(channel, 1), /not started/)
+        await Assert.rejects(() => subman.wait(channel, 1), /not started/)
       })
     })
 
@@ -430,15 +430,15 @@ global.describe &&
         })
 
         it('#subscribe() throws', async function() {
-          await Assert.rejects(subman.subscribe(channel, () => {}), /not started/)
+          await Assert.rejects(() => subman.subscribe(channel, () => {}), /not started/)
         })
 
         it('#publish() throws', async function() {
-          await Assert.rejects(subman.publish(channel, testmsg), /not started/)
+          await Assert.rejects(() => subman.publish(channel, testmsg), /not started/)
         })
 
         it('#wait() throws', async function() {
-          await Assert.rejects(subman.wait(channel, 1), /not started/)
+          await Assert.rejects(() => subman.wait(channel, 1), /not started/)
         })
       })
 
@@ -449,7 +449,7 @@ global.describe &&
       it('#cancel() unblocks #wait()', async function() {
         setTimeout(() => subman.cancel(channel), 1)
         // Assert.strictEqual(await subman.wait(channel), null) alternative
-        await Assert.rejects(subman.wait(channel), /cancelled/)
+        await Assert.rejects(() => subman.wait(channel), /cancelled/)
         Assert.equal(await subman._redis().type(channel), 'none')
         Assert.ok(!subman._map.has(channel))
       })
@@ -460,7 +460,7 @@ global.describe &&
 
       it('#stop() unblocks #wait()', async function() {
         setTimeout(() => subman.stop(channel), 1)
-        await Assert.rejects(subman.wait(channel), /aborted/)
+        await Assert.rejects(() => subman.wait(channel), /aborted/)
         Assert.ok(!subman._map.has(channel))
       })
 
