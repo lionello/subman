@@ -1,0 +1,29 @@
+{
+  "name": "subman",
+  "version": "1.0.0",
+  "description": "Redis Subscription Manager",
+  "main": "subman.js",
+  "scripts": {
+    "test": "mocha subman.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trustedkey/subman.git"
+  },
+  "keywords": [
+    "redis",
+    "pubsub"
+  ],
+  "author": "Lionello Lunesu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trustedkey/subman/issues"
+  },
+  "homepage": "https://github.com/trustedkey/subman#readme",
+  "dependencies": {
+    "ioredis": "^4.9.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  }
+}
